@@ -1,0 +1,16 @@
+
+  Displayable user list 
+ 
+  <div class="form-group">
+    <label class="col-form-label" for="inputDefault">Search user by  name</label>
+    <input type="text" (keyup)="myEvent($event)" placeholder="Search user by name"   class="form-control" placeholder="Default input" id="inputDefault">
+    <button type="button" class="btn btn-primary" (click)="GetUserListByName()">Get User List</button>
+  </div>
+  
+
+
+ <button type="button" class="btn btn-primary" (click)="GetAllUserList()">All Users </button>
+ 
+ <app-user-list [userList]= "userList" (getUseroutputInfo) = getUseroutputInfo($event)></app-user-list>
+
+
