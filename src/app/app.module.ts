@@ -18,7 +18,7 @@ import { UsersService } from './services/users.service';
 const appRoutes: Routes = [
 
   { path: 'home', component: HomeComponent },
-  { path: 'userProfile', component: UserProfileComponent },
+ // { path: 'userProfile', component: UserProfileComponent },
   { path: 'registration',  component: SignUpComponent },
   { path: ' ',  redirectTo : '/home',  pathMatch : 'full' },
   { path: '**',  redirectTo : '/home',  pathMatch : 'full' }
