@@ -1,43 +1,52 @@
-<form novalidate #userformValidate="ngForm" (ngSubmit)="userFormSubmit()">
-  <fieldset>
-    <legend>Registration</legend>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email</label>
-   
-      <input id="email" type="email" #Email="ngModel"  autocomplete="off" aria-describedby="emailHelp"  name="Email" [(ngModel)]="userModel.Email" required class="form-control" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
 
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email</label>
-     
-        <input id="username" type="text" #UserName="ngModel" autocomplete="off" name="UserName" [(ngModel)]="userModel.UserName" required class="form-control" placeholder="User name">
-        <small id="emailHelp" class="form-text text-muted">Your user name.</small>
-      </div>
-    
-
-    <div class="form-group">
-        <label for="exampleInputEmail1">First Name</label>
-        <input id="first_name" type="text" #firstName="ngModel" name="FirstName" autocomplete="off" [(ngModel)]="userModel.FirstName" name="FirstName" required class="form-control">
-       <!-- <input type="text" class="form-control" id="txtFirstName" aria-describedby="firstNamelHelp" placeholder="Enter first name">-->
-        <small id="firstNamelHelp" class="form-text text-muted">Yore first name.</small>
-      </div>
-      <div class="form-group">
-          <label for="exampleInputEmail1">Last Name</label>
-          <input id="last_name" type="text" #LastName="ngModel" autocomplete="off"  name="LastName" [(ngModel)]="userModel.LastName" required class="form-control">
-          <label data-error="Required!">Last Name </label>
-          <small id="lastNamelHelp" class="form-text text-muted">Your last name.</small>
+  
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">User Registration</span>
+          <div class="row">
+            <form class="col s12" novalidate #userformValidate="ngForm" (ngSubmit)="userFormSubmit()">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name" type="text" #firstName="ngModel" autocomplete="off" [(ngModel)]="userModel.FirstName" name="FirstName" required class="validate">
+                  <label data-error="Required!">First Name </label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name" type="text" #LastName="ngModel" autocomplete="off"  name="LastName" [(ngModel)]="userModel.LastName" required class="validate">
+                  <label data-error="Required!">Last Name </label>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="username" type="text" #UserName="ngModel" autocomplete="off" name="UserName" [(ngModel)]="userModel.UserName" required class="validate">
+                  <label data-error="Required!">User Name </label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="password" type="password" required minlength="8" maxlength="20" #Password="ngModel" name="Password" autocomplete="off"  [(ngModel)]="userModel.Password"
+                    class="validate">
+                    <label data-error="Password requied">Password </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="email" type="email" #Email="ngModel"  autocomplete="off"  name="Email" [(ngModel)]="userModel.Email" required class="validate">
+                  <label data-error="Invalid email">Email </label>
+                </div>
+              </div>
+              <div class="row">
+                <button class="waves-effect waves-light btn"  type="submit">Submit</button>
+              </div>
+  
+              <pre>{{ userformValidate.value | json}}</pre>
+            </form>
+          </div>
         </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" id="txtPassword" class="form-control" maxlength="8" placeholder="Password">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Confirm Password</label>
-      <input type="password" id="confPassword" class="form-control" maxlength="8" placeholder="Reenter password">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </fieldset>
-
-  <pre>{{ userformValidate.value | json}}</pre>
-</form>
+        <div class="card-action">
+          <a href="#">Registration</a>
+          <a href="#">Login</a>
+        </div>
+  
+  
+  
+      </div>
+   
