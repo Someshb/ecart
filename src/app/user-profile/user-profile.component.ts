@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Component({
   selector: 'app-user-profile',
@@ -10,8 +11,12 @@ export class UserProfileComponent implements OnInit {
  
   userID : any ;
   userList : any[];
-  constructor(private httpClient : HttpClient) { 
+  userCollection : any[];
+  constructor(private httpClient : HttpClient,private db: AngularFireDatabase) { 
     this.GetAllUserList();
+
+     
+     
 
   }
 
@@ -32,16 +37,19 @@ export class UserProfileComponent implements OnInit {
        {
          //console.log(data);
          this.userList =  data;
-         console.log(this.userList);
+         //console.log(this.userList);
        }
     )
+    
+    
+    
   }
 
   
   public GetAllUserList()
   {
      console.log('in userlist');
-    this.httpClient.get("https://jsonplaceholder.typicode.com/users")
+    /*this.httpClient.get("https://jsonplaceholder.typicode.com/users")
     .subscribe(
        (data: any[]) =>
        {
@@ -49,7 +57,17 @@ export class UserProfileComponent implements OnInit {
          this.userList =  data;
          console.log(this.userList);
        }
-    )
+    )*/
+
+    this.db.list('UserCollection').valueChanges().subscribe(collection=>{
+
+      this.userList = collection;
+      console.log(this.userList); 
+
+     });
+
+
+    
   }
 
   public getUseroutputInfo(passedObject : any)

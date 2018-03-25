@@ -1,5 +1,4 @@
 
-  
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
           <span class="card-title">User Registration</span>
@@ -24,13 +23,23 @@
                 <div class="input-field col s6">
                   <input id="password" type="password" required minlength="8" maxlength="20" #Password="ngModel" name="Password" autocomplete="off"  [(ngModel)]="userModel.Password"
                     class="validate">
-                    <label data-error="Password requied">Password </label>
+                    <label data-error="Password requied!">Password </label>
                 </div>
               </div>
               <div class="row">
-                <div class="input-field col s12">
+                <div class="input-field col s6">
                   <input id="email" type="email" #Email="ngModel"  autocomplete="off"  name="Email" [(ngModel)]="userModel.Email" required class="validate">
-                  <label data-error="Invalid email">Email </label>
+                  <label data-error="Invalid email!">Email </label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="address" type="text" #Address="ngModel"  autocomplete="off"  name="Address" [(ngModel)]="userModel.Address" required class="validate">
+                    <label data-error="Address required!">Address </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="phone" type="text" #Phone="ngModel"  autocomplete="off"  name="Phone" [(ngModel)]="userModel.Phone" required class="validate">
+                  <label data-error="Phone number required!">Phone</label>
                 </div>
               </div>
               <div class="row">

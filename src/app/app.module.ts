@@ -1,10 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {environment} from './../environments/environment';
 
 // Firebase  module
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 //import { AngularFireAuth } from 'angularfire2/auth';
 
 
@@ -38,14 +40,15 @@ const appRoutes: Routes = [
   
   
 ]
-export const firebaseConfig = {
 
-    apiKey: "AIzaSyB7E_mSMfDZOIHHTGs6CuBzRkyt0DHOqWc",
-    authDomain: "ecartdb.firebaseapp.com",
-    databaseURL: "https://ecartdb.firebaseio.com",
-    projectId: "ecartdb",
-    storageBucket: "ecartdb.appspot.com",
-    messagingSenderId: "1058933115298"
+const firebaseConfig = {
+
+  apiKey: "AIzaSyB7E_mSMfDZOIHHTGs6CuBzRkyt0DHOqWc",
+  authDomain: "ecartdb.firebaseapp.com",
+  databaseURL: "https://ecartdb.firebaseio.com",
+  projectId: "ecartdb",
+  storageBucket: "ecartdb.appspot.com",
+  messagingSenderId: "1058933115298"
 }
 
 @NgModule({
@@ -67,7 +70,10 @@ export const firebaseConfig = {
     FormsModule,
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    //AngularFireModule.initializeApp(environment.firebaseDatabaseConfig),
+    
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
     
   ],
   providers: [UsersService,AuthService ],

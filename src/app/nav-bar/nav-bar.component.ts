@@ -14,7 +14,7 @@ export class NavBarComponent implements OnInit {
    authenticated : boolean = false;
   constructor(public af: AngularFireAuth) {
     this.af.authState.subscribe((auth)=> {
-       if(af.auth != null)
+       if(auth != null)
        {
             this.user = af.authState;
             this.authenticated = true;
@@ -27,14 +27,12 @@ export class NavBarComponent implements OnInit {
 
    login()
    {
-    this.af.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-    //this.authenticated = true;
+    this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
    }
    logout()
    {
     this.af.auth.signOut();
     this.authenticated = false;
-    
    }
   ngOnInit() {
   }

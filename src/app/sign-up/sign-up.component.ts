@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { User } from "../common/user.model";
+import { UserModel } from "../common/user.model";
 import { HttpClient } from '@angular/common/http';
-
+import  {UsersService} from '../services/users.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,23 +10,27 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SignUpComponent implements OnInit {
    
-  userModel : User = new User();
+  userModel : UserModel = new UserModel();
+  //public userServices : UsersService = new UsersService();
   @ViewChild('userformValidate')
   checkForm : any;
-constructor(private httpClient: HttpClient) { 
+constructor(private httpClient: HttpClient,private userServices : UsersService) { 
      
   }
 
   ngOnInit() {
+    this.userServices.GetData();
   }
   userFormSubmit()
   {
       if(this.checkForm.valid)
       {
-        console.log(this.userModel);   
+          console.log("After submit");
         // https://github.com/techsithgit/json-faker-directory.git
         //this.httpClient.post("")
-        this.checkForm.reset();
+        // Submit registration form object  through userService
+        this.userServices.SubmitUser(this.userModel);
+        //this.checkForm.reset();
       }
      
   }
