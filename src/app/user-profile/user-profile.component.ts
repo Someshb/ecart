@@ -12,21 +12,20 @@ export class UserProfileComponent implements OnInit {
   userID : any ;
   userList : any[];
   userCollection : any[];
+  userDetailsInfo : any[];
+  userName : string;
+  email: string;
+  address: string;
+  name : string;
+  contact : string;
+
+
   constructor(private httpClient : HttpClient,private db: AngularFireDatabase) { 
     this.GetAllUserList();
-
-     
-     
-
   }
 
-  public myEvent(event: any)
-  {
-    
-       this.userID =  event.target.value;
-       
-      
-  }
+ 
+  // This is added for search user -------
   public GetUserListByName()
   {
      //console.log('in userlist');
@@ -40,8 +39,6 @@ export class UserProfileComponent implements OnInit {
          //console.log(this.userList);
        }
     )
-    
-    
     
   }
 
@@ -62,18 +59,27 @@ export class UserProfileComponent implements OnInit {
     this.db.list('UserCollection').valueChanges().subscribe(collection=>{
 
       this.userList = collection;
-      console.log(this.userList); 
+      //console.log(this.userList); 
 
      });
-
-
-    
   }
 
-  public getUseroutputInfo(passedObject : any)
+  public myEvent(event : any)
   {
-     console.log('Event emmited from userlist component');
+
+  }
+  public selectedUserInfoFromInnerComponemt(passedObject : any)
+  {
+     console.log('Event emmited from userlist [inner component]  --------------');
      console.log(passedObject);
+     var list = passedObject as string;
+     var userDetailsInfo = list.split('|');
+     console.log(userDetailsInfo[1]);
+     this.userName = userDetailsInfo[0];
+     this.email = userDetailsInfo[4];
+     this.address = userDetailsInfo[3];
+     this.name = userDetailsInfo[1] + userDetailsInfo[2];
+     this.contact = userDetailsInfo[5];
   }
 
   ngOnInit() {

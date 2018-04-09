@@ -1,13 +1,27 @@
-  <div class="form-group">
-    <label class="col-form-label" for="inputDefault">Search user by  name</label>
-    <input type="text" (keyup)="myEvent($event)" placeholder="Search user by name"   class="form-control" placeholder="Default input" id="inputDefault">
-    <!--<button type="button" class="btn btn-primary" (click)="GetUserListByName()">Get User List</button>-->
-  </div>
-  
+<div class="form-group">
+  <label class="col-form-label" for="inputDefault">Search user by name</label>
+  <input type="text" (keyup)="myEvent($event)" placeholder="Search user by name" class="form-control" placeholder="Default input"
+    id="inputDefault">
+  <!--<button type="button" class="btn btn-primary" (click)="GetUserListByName()">Get User List</button>-->
+</div>
+<br>
+<br>
+<div class="form-group">
+  Selected Data : <br>
+  User Name : {{userName}} <br>
+  Name : {{name}} <br> 
+  Email : {{email}} <br>
+  Address : {{address}} <br>
+  Contact : {{contact}} <br>
+  <br>
+    
+</div>
 
+<br>
+<br>
+<br>
+<br>
+<button type="button" class="btn btn-primary" (click)="GetAllUserList()">All Users </button>
 
- <button type="button" class="btn btn-primary" (click)="GetAllUserList()">All Users </button>
- 
- <app-user-list [userList]= "userList" (getUseroutputInfo) = getUseroutputInfo($event)></app-user-list>
-
-
+<!-- This app-user-list tag is the tag which is called from the outer html component user-profile.component -->
+<app-user-list [userList]="userList" (selectedUserInfoFromInnerComponemt)= selectedUserInfoFromInnerComponemt($event)></app-user-list>

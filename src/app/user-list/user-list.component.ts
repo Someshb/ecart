@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class UserListComponent implements OnInit {
 
   @Input() userList;
-  @Output() getUseroutputInfo: EventEmitter<any> = new EventEmitter<any>();
+  @Output() selectedUserInfoFromInnerComponemt: EventEmitter<any> = new EventEmitter<any>();
   constructor(httpClient : HttpClient) { 
 
   }
@@ -17,9 +17,18 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
   }
 
-  public GetRowEvent(eventID: any)
+  // This event will emmit data to outer 
+  public PassRowEventToParent(event: any)
   {
-    console.log(eventID.target.innertext);
-    this.getUseroutputInfo.emit('Hi'); 
+    //console.log(eventID.target.innertext);
+    //console.log(eventID.);
+    
+    var target = event.target || event.srcElement || event.currentTarget;
+    var idAttr = target.attributes.id;
+    var value = idAttr.nodeValue;
+    //console.log("Selected Row : "+ value);
+    this.selectedUserInfoFromInnerComponemt.emit(value);
+    //console.log(event.srcElement.attributes);
+    
   }
 }

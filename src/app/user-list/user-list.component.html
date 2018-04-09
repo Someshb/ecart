@@ -20,7 +20,7 @@
         <td> {{item.Phone}} </td>
         <td>{{item.Email}}</td>
         <td>
-          <button type="button" class="btn btn-primary" (click)="GetRowEvent($event)">Select</button>
+          <button type="button" id="{{item.UserName}} | {{item.FirstName}} | {{item.LastName}} | {{item.Address}} | {{item.Email}} | {{item.Phone}}"    class="btn btn-primary" (click)="PassRowEventToParent($event)">Select</button>
         </td>
       </tr>
     </tbody>
